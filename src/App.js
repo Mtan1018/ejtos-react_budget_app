@@ -26,6 +26,7 @@ const App = () => {
                     </div>
                     <div className='col-sm'>
                         <Currency />
+                    </div> {/* Corrected indentation */}
                 </div>
                 <h3 className='mt-3'>Allocation</h3>
                 <div className='row '>
