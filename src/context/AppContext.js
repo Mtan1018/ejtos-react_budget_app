@@ -16,7 +16,7 @@ export const AppReducer = (state, action) => {
             if(total_budget <= state.budget) {
                 total_budget = 0;
                 state.expenses.map((currentExp)=> {
-                    if(currentExp.name === action.payload.name) {
+                    if (currentExp.name === action.payload.name) {
                         currentExp.cost = action.payload.cost + currentExp.cost;
                     }
                     return currentExp
@@ -57,19 +57,32 @@ export const AppReducer = (state, action) => {
                 ...state,
                 budget
             };
-        case 'SET_BUDGET':
-            action.type = "DONE";
-            state.budget = action.payload;
-
-            return {
-                ...state,
-            };
-        case 'CHG_CURRENCY':
-            action.type = "DONE";
-            state.currency = action.payload;
-            return {
-                ...state
-            }
+            case 'SET_BUDGET':
+                if (action.payload >= state.expenses.reduce((total, item) => total + item.cost, 0)) {
+                    // Check if the new budget is greater than or equal to the total expenses
+                    return {
+                        ...state,
+                        budget: action.payload,
+                    };
+                } else {
+                    alert("You cannot reduce the budget value lower than the spending!");
+                    return {
+                        ...state,
+                    };
+                };
+            
+            case 'CHG_CURRENCY':
+                if (['$', '£', '€', '₹'].includes(action.payload)) {
+                    return {
+                        ...state,
+                        currency: action.payload,
+                    };
+                } else {
+                    alert("Invalid currency selection!");
+                    return {
+                        ...state,
+                    };
+                }
 
         default:
             return state;
@@ -78,7 +91,7 @@ export const AppReducer = (state, action) => {
 
 // 1. Sets the initial state when the app loads
 const initialState = {
-    budget: 20000,
+    budget: 2000,
     expenses: [
         { id: "Marketing", name: 'Marketing', cost: 50 },
         { id: "Finance", name: 'Finance', cost: 300 },
