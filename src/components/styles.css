@@ -1,0 +1,12 @@
+/* styles.css */
+
+/* Style for the dropdown options */
+.alert alert-secondary {
+    padding: 8px;
+    background-color: lightblue;
+}
+
+/* Style for the dropdown options when hovered */
+.select-option:hover {
+    background-color: white; /* Change background color on hover */
+}
