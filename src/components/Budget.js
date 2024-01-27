@@ -1,6 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { AppContext } from '../context/AppContext';
-import Currency from './Currency';
 
 const Budget = () => {
     const { currency, budget, dispatch } = useContext(AppContext);

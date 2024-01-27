@@ -1,29 +1,77 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
+
 import { AppContext } from '../context/AppContext';
 
+import '../App.css';
+
+ 
+
 const Currency = () => {
-    const { currency, dispatch } = useContext(AppContext);
 
-    const handleCurrencyChange = (event) => {
-        let newCurrency = event.target.value;
+  const { currency, dispatch } = useContext(AppContext);
 
-        
-        dispatch({ type: 'CHG_CURRENCY', payload: newCurrency });
-    }
+ 
 
-    return (
-        <div className='alert alert-info'  style={{backgroundColor:"lightgreen", color:"white"}}>
-            <span>Currency: {currency} </span>
-            <button className='btn-group'>
-            <select className="dropdown-item active" value={currency} onChange={handleCurrencyChange}>
-                <option className="dropdown-item active" value="$">Dollar ($)</option>
-                <option value="£">Pound (£)</option>
-                <option value="€">Euro (€)</option>
-                <option value="₹">Rupee (₹)</option>
-            </select>
-            </button>
-        </div>
-    );
+  const [orgCurrency, setOrgCurrency] = useState('');
+
+ 
+
+  const handleCurrencyChange = (event) => {
+
+    let newCurrency = event.target.value;
+
+    setOrgCurrency(newCurrency);
+
+    dispatch({ type: 'CHG_CURRENCY', payload: newCurrency });
+
+  };
+
+ 
+
+  return (
+
+    <div
+
+      className="input-group-text alert alert-secondary"
+      id="currencySelect"
+      style={{ backgroundColor: 'lightgreen', color: 'green' }}
+
+      htmlFor="inputGroupSelect02"
+
+
+    >
+
+      <span className="currencyBox">Currency: {currency} </span>
+
+      <select
+
+        className="custom-select custom-select-bg"
+
+        id="inputGroupSelect01"
+
+        value={orgCurrency}
+
+        onChange={handleCurrencyChange}
+
+      >
+
+        <option value="$" className="currency-option">Dollar ($)</option>
+
+        <option value="£" className="currency-option">Pound (£)</option>
+
+        <option value="€" className="currency-option">Euro (€)</option>
+
+        <option value="₹" className="currency-option">Rupee (₹)</option>
+
+      </select>
+
+    </div>
+
+  );
+
 };
 
+ 
+
 export default Currency;
+

@@ -36,3 +36,42 @@
     transform: rotate(360deg);
   }
 }
+
+#currencySelect .currency-option {
+    background-color: #90EE90; /* 你想要的颜色 */
+    color: #FFFFFF; /* 下拉菜单文本颜色 */
+    /* 其他样式，如边框等 */
+  }
+
+/* 修改下拉菜单的背景颜色 */
+select {
+    background-color: #FFFFFF; /* 你想要的颜色 */
+    color: black; /* 下拉菜单文本颜色 */
+    /* 其他样式，如边框等 */
+  }
+
+
+  /* 修改currency选项的下拉菜单的背景颜色 */
+  #inputGroupSelect01.custom-select-bg {
+    background-color: #90EE90; /* 你想要的颜色 */
+    color: green; /* 下拉菜单选项文本颜色 */
+    /* 其他样式 */
+    }
+
+
+
+  /* 修改下拉菜单中选项的背景颜色 */
+  select option {
+    background-color: #FFFFFF; /* 你想要的颜色 */
+    color: black; /* 下拉菜单选项文本颜色 */
+    /* 其他样式 */
+    }
+  
+  /* 使用伪元素覆盖默认样式（注意：这并不适用于所有浏览器） */
+  select::after {
+    background-color: #90EE90;
+    color: #FFFFFF;
+    content: '\2002'; /* 添加一个空格 */
+    pointer-events: none;
+  }
+  
